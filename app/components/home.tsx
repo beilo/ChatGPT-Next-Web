@@ -25,6 +25,7 @@ import { SideBar } from "./sidebar";
 import { useAppConfig } from "../store/config";
 import { useCustomUserStore } from "../store/custom-user";
 import { Login } from "./login";
+import { useAccessStore } from "../store";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
@@ -139,7 +140,11 @@ function Screen() {
 export function Home() {
   useSwitchTheme();
 
-  const customUser = useCustomUserStore()
+  const customUser = useCustomUserStore();
+  const { updateCode } = useAccessStore((_) => ({ updateCode: _.updateCode }));
+  useEffect(() => {
+    updateCode("567");
+  }, [updateCode]);
 
   if (!useHasHydrated()) {
     return <Loading />;
