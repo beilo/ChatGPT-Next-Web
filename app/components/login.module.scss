@@ -1,3 +1,32 @@
+.webTitle {
+    position: absolute;
+    left: 140px;
+    top: 359px;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 44px;
+    /* identical to box height, or 68% */
+
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.webText {
+    position: absolute;
+    left: 140px;
+    top: 427px;
+    
+    font-size: 40px;
+    line-height: 44px;
+    /* identical to box height, or 109% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
 .wrap {
     position: fixed;
     top: 0;
@@ -38,13 +67,14 @@
     mix-blend-mode: normal;
     backdrop-filter: blur(36.5px);
     border-radius: 36.2376px;
+    text-align: left;
 }
 
 .btn {
     width: 123px;
     height: 56px;
 
-    background: linear-gradient(93.02deg, #1879BF -3.49%, #9ABAF8 180.12%);
+    background-color: var(--white);
     box-shadow: 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
     border-radius: 44px;
     border-width: 0px;

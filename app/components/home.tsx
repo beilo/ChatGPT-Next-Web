@@ -23,6 +23,8 @@ import {
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
 import { useAppConfig } from "../store/config";
+import { useCustomUserStore } from "../store/custom-user";
+import { Login } from "./login";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
@@ -32,10 +34,6 @@ export function Loading(props: { noLogo?: boolean }) {
     </div>
   );
 }
-
-const Login = dynamic(async () => (await import("./login")).Login, {
-  loading: () => <Loading noLogo />,
-});
 
 const Settings = dynamic(async () => (await import("./settings")).Settings, {
   loading: () => <Loading noLogo />,
@@ -132,7 +130,6 @@ function Screen() {
           <Route path={Path.Masks} element={<MaskPage />} />
           <Route path={Path.Chat} element={<Chat />} />
           <Route path={Path.Settings} element={<Settings />} />
-          <Route path={Path.Login} element={<Login />} />
         </Routes>
       </div>
     </div>
@@ -142,12 +139,7 @@ function Screen() {
 export function Home() {
   useSwitchTheme();
 
-  let userSession = JSON.parse(localStorage.getItem("user") ?? `{}`);
-  const [user, _setUser] = useState(userSession);
-  function setUser(user: any) {
-    localStorage.setItem("user", JSON.stringify(user));
-    _setUser(user);
-  }
+  const customUser = useCustomUserStore()
 
   if (!useHasHydrated()) {
     return <Loading />;
@@ -155,12 +147,12 @@ export function Home() {
 
   return (
     <ErrorBoundary>
-      {Object.keys(user).length ? (
+      {customUser.isLogin ? (
         <Router>
           <Screen />
         </Router>
       ) : (
-        <Login setUser={setUser} />
+        <Login setUser={customUser.login} />
       )}
     </ErrorBoundary>
   );

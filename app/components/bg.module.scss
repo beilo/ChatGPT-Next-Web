@@ -1,0 +1,59 @@
+.bg_img {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.ico {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    left: 23px;
+    top: 16px;
+}
+
+.text {
+    position: fixed;
+    left: 50px;
+    top: 17px;
+
+    font-size: 16px;
+    line-height: 18px;
+
+
+    color: #FFFFFF;
+}
+
+.ico_warning {
+    position: fixed;
+    width: 19px;
+    height: 19px;
+    right: 140px;
+    top: 19px;
+}
+
+.ico_setting {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 19px;
+    right: 113px;
+}
+
+.logout {
+    position: fixed;
+    right: 29px;
+    top: 17px;
+
+    font-size: 17px;
+    line-height: 22px;
+    /* identical to box height, or 132% */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
